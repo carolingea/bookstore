@@ -10,7 +10,6 @@ class BookController < ApplicationController
         # Author.find()
         # Author.find_by()
         # Author.where()
-        
     end
 
     def create # Crea un libro
