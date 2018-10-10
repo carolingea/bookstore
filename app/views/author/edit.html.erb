@@ -1,0 +1,22 @@
+<div class="col-8 offset-2" >
+    <h1>Editar Autor</h1>
+    <form action="/autores/update/<%= @autor.id %>" method="post">
+        <%=  hidden_field_tag :authenticity_token, form_authenticity_token%>
+        <input type="hidden" name="author[id]" value="<%= @autor.id %>">
+        <div class="form-group">
+            <label>Nombre</label>
+            <input type="text" name="author[name]" class="form-control" value="<%= @autor.name %>">
+        </div>
+        <div class="form-group">
+            <label>Descripción</label>
+            <input type="text" name="author[string]" class="form-control" value="<%= @autor.string %>">
+        </div>
+        <div class="form-group">
+            <label>Año</label>
+            <input type="text" name="author[year]" class="form-control" value="<%= @autor.year %>">
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary" type="submit">Guardar</button>
+        </div>
+    </div>  
+</form>

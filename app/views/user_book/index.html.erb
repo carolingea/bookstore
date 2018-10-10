@@ -1,0 +1,22 @@
+<h1>Libros Comprados</h1>
+<ul class="list-group">
+    <% for book in  @books %>
+        <li class="list-group-item">
+            <div class="row">
+                <div class="col-8">
+                    <a href="/libros/mostrar/<%= book.id_libro %>" data-toggle="tooltip" title="<%= book.description %>">
+                        <%= book.title %>
+                    </a>
+                </div>
+                <div class="col-4 text-right">
+                    <form method="post" action="/mis-libros/borrar/<%= book.id %>">
+                        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+                        <input  class="btn btn-primary" type="submit" value="X" />
+                    </form>
+                </div>
+            </div>
+            
+        </li>
+    <% end %>
+</ul>
+

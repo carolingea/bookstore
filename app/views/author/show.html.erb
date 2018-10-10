@@ -1,0 +1,25 @@
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title"><h2><%= @autor.name %></h2></h5>
+        <p class="card-text">
+            <%= @autor.string %>
+
+            <h5>Libros Escritos</h5>
+            <ul class="list-group">
+                <% for libro in @libros %>
+                    <li class="list-group-item list-group-item-light">
+                        <a href="/libros/mostrar/<%= libro.id %>" data-toggle="tooltip" title="<%= libro.description %>">
+                            <%= libro.title %>
+                        </a>
+                    </li>
+                <% end %>
+            </ul>    
+        </p>
+        
+        <form action="/autores/borrar/<%= @autor.id %>" method="post">
+            <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+            <button type="submit" class="btn btn-primary">Borrar</button>
+        </form>
+        
+    </div>
+</div>

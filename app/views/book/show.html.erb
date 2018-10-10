@@ -1,0 +1,28 @@
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title"><%= @book.title %></h5>
+        <p class="card-text">
+            <%= @book.description %>
+            <ul class="list-group">
+                <% for autor in @autores %>
+                    <li class="list-group-item list-group-item-light">
+                        <a href="/autores/mostrar/<%= autor.id %>"><%= autor.name %></a>
+                    </li>
+                <% end %>
+            </ul>
+        </p>
+        
+        <form class="form-check form-check-inline" method="post" action="/libros/borrar/<%= @book.id %>">
+            <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+            <button type="submit" class="btn btn-primary">Borrar</button>
+        </form>
+
+        <% if user_signed_in? %>
+            <form class="form-check form-check-inline" method="post" action="<%= mis_libros_agregar_path  %>">
+                <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+                <input type="hidden" name="book[id]" value="<%= @book.id %>" >
+                <button type="submit" class="btn btn-primary">Agregar Libro al Carrito</button>
+            </form>
+        <% end %>
+    </div>
+</div>
